@@ -22,14 +22,6 @@ while exit != True:
 Ejecuta el programa solo con los imports.
 
 Responde: ¿Se ha ejecutado algo?
-No
-
-Realiza ahora un menú en modo texto con las siguientes opciones para el usuario, utilizando las funciones antes creadas:
-
-<pre>
-    1. Calcular la secuencia de Fibonacci hasta un número
-    2. Convertir temperatura de ºC ºF
-    3. Salir
-<pre>
+    No.
 
 """

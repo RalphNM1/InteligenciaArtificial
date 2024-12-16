@@ -1,0 +1,5 @@
+Pérez, Juan = 123456789
+Gómez, Ana = 987654321
+López, María = 112233445
+Pérez, Juan = 998877665
+Martínez, Carlos = 554433221

@@ -82,19 +82,19 @@ while True:
             nif, nombre, fecha_nac, num_colegiado, sexo = introducir_datos_trabajador(lista_trabajadores)
 
             especialidad = str(input("Introduzca la especialidad del médico: "))
-            fecha_ejer = str(input("Introduzca la fecha en la que comenzó a ejercer (formato DD/MM/AAAA): "))
+            fecha_comienzo = str(input("Introduzca la fecha en la que comenzó a ejercer (formato DD/MM/AAAA): "))
 
-            medico_nuevo = Medico(nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_ejer)
+            medico_nuevo = Medico(nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo)
 
             lista_trabajadores.append(medico_nuevo)
             print(f"\nEl médico {medico_nuevo.nombre} ha sido añadido correctamente.\n")
         elif tipo_trabajador == 2:
             nif, nombre, fecha_nac, num_colegiado, sexo = introducir_datos_trabajador(lista_trabajadores)
-            area = str(input("Introduzca el area de la enfermer@: "))
             
-            personas_acargo = int(input("Introduzca el número de personas a cargo"))
+            area = str(input("Introduzca el area de la enfermer@: "))
+            personas_acargo = int(input("Introduzca el número de personas a cargo: "))
 
-            enfermera_nueva = Enfermera(nif, nombre, fecha_nac, num_colegiado, sexo,area,personas_acargo)
+            enfermera_nueva = Enfermera(nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo)
 
             lista_trabajadores.append(enfermera_nueva)
 
@@ -119,16 +119,43 @@ while True:
 
 
     if(opcion == 4):
-       nif_buscar =  input("Introduzca el dni del trabajador del que necesita información")
-
+        nif_buscar =  input("Introduzca el dni del trabajador del que necesita información: ")
+    
+        for trabajador in lista_trabajadores:
+            if trabajador.nif == nif_buscar:
+                print("Datos del Trabajador: \n ---------------------")
+                print(f"NIF: {trabajador.nif}\nNombre: {trabajador.nombre}\nFecha de Nacimiento: {trabajador.fecha_nac}\nNúmero Colegiado: {trabajador.num_colegiado}\nSexo: {trabajador.sexo}")
+                if(trabajador.describeme() == 'Enfermera'):       
+                    print(f"Area: {trabajador.area}\nPersonas a cargo: {trabajador.personas_acargo}")
+                elif(trabajador.describeme() == 'Medico'): 
+                    print(f"Especialidad: {trabajador.especialidad}\nFecha en la que comenzó a ejercer : {trabajador.fecha_comienzo}")
 
     if(opcion == 5):
-     print(Medico.mostrar_años_trabajados("05/11/2004"))   
+        nif_buscar =  input("Introduzca el dni del trabajador del que necesita información: ")
+
+        for trabajador in lista_trabajadores:
+            if trabajador.describeme() == 'Enfermera':
+                print("El trabajador debe ser un Médico.")
+            elif trabajador.nif == nif_buscar:
+                print(f"{trabajador.nombre} ha trabajado {Medico.mostrar_años_trabajados(trabajador.fecha_comienzo)} años.")
+
+     
+        
+
     if(opcion == 6):
+        nif_buscar =  input("Introduzca el dni del trabajador del que necesita información: ")
+
+
+
+        
+
         Enfermera.mostrar_personas_acargo("enfermera")
     if(opcion == 7):
+        nif_buscar =  input("Introduzca el dni del trabajador del que necesita información: ")
+
         Enfermera.añadir_personas_acargo("enfermera",4)
     if(opcion == 8):
+        nif_buscar =  input("Introduzca el dni del trabajador del que necesita información: ")
         Enfermera.reducir_personas_acargo("enfermera",4)
     if(opcion == 9):
         break

@@ -1,8 +1,8 @@
 from Trabajador import Trabajador
 import datetime as dt
 class Medico(Trabajador):
-    def __init__(self,nif, nombre, fecha_nac, numero_colegiado,sexo,especialidad,fecha_comienzo,):
-        Trabajador.__init__(self,nif,nombre,fecha_nac,numero_colegiado,sexo)
+    def __init__(self,nif, nombre, fecha_nac, num_colegiado,sexo,especialidad,fecha_comienzo,):
+        Trabajador.__init__(self,nif,nombre,fecha_nac,num_colegiado,sexo)
         self.especialidad = especialidad
         self.fecha_comienzo = fecha_comienzo
 

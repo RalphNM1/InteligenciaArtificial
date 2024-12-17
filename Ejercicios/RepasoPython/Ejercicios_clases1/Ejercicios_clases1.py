@@ -1,52 +1,9 @@
 # Clases base
 from datetime import datetime
+from Medico import Medico
+from Enfermera import Enfermera
+from Trabajador import Trabajador
 
-class Trabajador:
-    def __init__(self, nif, nombre, fecha_nac, num_colegiado, sexo):
-        self.nif = nif
-        self.nombre = nombre
-        self.fecha_nac = fecha_nac
-        self.num_colegiado = num_colegiado
-        self.sexo = sexo
-
-    def describeme(self):
-        return self.__class__.__name__
-
-
-class Medico(Trabajador):
-    def __init__(self, nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo):
-        super().__init__(nif, nombre, fecha_nac, num_colegiado, sexo)
-        self.especialidad = especialidad
-        self.fecha_comienzo = fecha_comienzo
-
-    @staticmethod
-    def mostrar_años_trabajados(fecha_comienzo):
-        fecha_inicio = datetime.strptime(fecha_comienzo, "%d/%m/%Y")
-        fecha_actual = datetime.now()
-        return fecha_actual.year - fecha_inicio.year - ((fecha_actual.month, fecha_actual.day) < (fecha_inicio.month, fecha_inicio.day))
-
-
-class Enfermera(Trabajador):
-    def __init__(self, nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo):
-        super().__init__(nif, nombre, fecha_nac, num_colegiado, sexo)
-        self.area = area
-        self.personas_acargo = personas_acargo
-
-    def mostrar_personas_acargo(self):
-        print(f"La enfermera {self.nombre} tiene {self.personas_acargo} personas a su cargo.")
-
-    def añadir_personas_acargo(self, cantidad):
-        self.personas_acargo += cantidad
-        print(f"Se han añadido {cantidad} personas a cargo. Ahora {self.nombre} tiene {self.personas_acargo} personas a su cargo.")
-
-    def reducir_personas_acargo(self, cantidad):
-        if self.personas_acargo - cantidad >= 0:
-            self.personas_acargo -= cantidad
-            print(f"Se han reducido {cantidad} personas a cargo. Ahora {self.nombre} tiene {self.personas_acargo} personas a su cargo.")
-        else:
-            print("No se puede reducir más personas a cargo de las que tiene.")
-
-# Lista de trabajadores
 lista_trabajadores = []
 
 

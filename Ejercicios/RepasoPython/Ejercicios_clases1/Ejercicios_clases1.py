@@ -1,3 +1,26 @@
+
+"""
+Gestión de un hospital
+Una vez que ya has conocido cómo realizar la persistencia de los datos en Python, utilízalo 
+en tu ejercicio de clases de los trabajadores de un hospital. Guarda en .csv la información 
+de tal forma que tu nuevo menú será:
+Gestión de los trabajadores del hospital
+1. Añadir trabajador
+2. Borrar trabajador
+3. Mostrar lista de trabajadores
+4. Mostrar detalle de un trabajador
+5. Mostrar número de años trabajados de un médico
+6. Mostrar número de personas a cargo de una enfermera
+7. Añadir personas a cargo de una enfermera
+8. Reducir personas a cargo de una enfermera
+9. Guardar datos en .csv
+10. Cargar datos de .csv
+11. Salir
+Debes preguntar al usuario tanto el nombre del fichero a crear como el que se carga.
+Finalmente documenta todo con Sphinx.
+"""
+
+
 # Clases base
 from datetime import datetime
 from Medico import Medico
@@ -5,7 +28,6 @@ from Enfermera import Enfermera
 from Trabajador import Trabajador
 
 lista_trabajadores = []
-
 
 # Funciones auxiliares
 def introducir_datos_trabajador():

@@ -7,5 +7,5 @@ class Enfermera(Trabajador):
         self.personas_acargo = personas_acargo
 
 
-
 mi_enfermera = Enfermera()
+

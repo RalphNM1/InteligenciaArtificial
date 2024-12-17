@@ -14,7 +14,3 @@ class Trabajador:
     def describeme(self):
         print("Soy un Trabajador del tipo", type(self).__name__)
 
-
-
-
-

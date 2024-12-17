@@ -30,15 +30,33 @@ Gestión de los trabajadores del hospital
 Realizar todo el control relativo a la entrada de datos. Implementar el ejercicio con clases y
 listas.
 """
-def añadir_Trabajador(self,Trabajador,lista_trabajadores = []):
+def añadir_trabajador(self,Trabajador,lista_trabajadores = []):
     lista_trabajadores.append(Trabajador)
+
+def introducir_datos_trabajador():
+
+    nif = str(input("Introduzca el NIF del trabajador: "))
+    nombre = str(input("Introduzca el nombre del trabajador: "))
+
+
+    return nif,nombre
+
 
 lista_trabajadores = []
 while True:
     opcion = int(input("Gestión de los trabajadores del hospital\n1. Añadir trabajador\n2. Borrar trabajador\n3. Mostrar lista de trabajadores\n4. Mostrar detalle de un trabajador\n5. Mostrar número de años trabajados de un médico\n6. Mostrar número de personas a cargo de una enfermera\n7. Añadir personas a cargo de una enfermera\n8. Reducir personas a cargo de una enfermera\n9.Salir\n"))
 
     if(opcion == 1):
-        print()
+        tipo_trabajador = int(input("Quiere introducir un medico(1) o una enfermera(2): "))
+
+        if(tipo_trabajador == 1):
+            print("medico")
+        elseif(tipo_trabajador == 2):
+            print("enfermera")
+
+    introducir_datos_trabajador()        
+        
+        
     if(opcion == 2):
         print()
     if(opcion == 3):

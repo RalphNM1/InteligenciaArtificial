@@ -7,10 +7,12 @@ class Trabajador:
     def __init__(self,nif, nombre, fecha_nac,numero_colegiado,sexo):
         self.nif = nif
         self.nombre = nombre
-        self.fecha = fecha_nac
+        self.fecha_nac = fecha_nac
         self.numero_colegiado = numero_colegiado
         self.sexo = sexo
 
     def describeme(self):
-        print("Soy un Trabajador del tipo", type(self).__name__)
+        return type(self).__name__
 
+
+    #def mostrarDetalle(self):

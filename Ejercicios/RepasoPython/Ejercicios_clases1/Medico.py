@@ -1,11 +1,15 @@
 from Trabajador import Trabajador
-
+import datetime as dt
 class Medico(Trabajador):
-    def __init__(self,nif, nombre, fecha_nac,numero_colegiado,sexo,especialidad,fecha_comienzo,):
+    def __init__(self,nif, nombre, fecha_nac, numero_colegiado,sexo,especialidad,fecha_comienzo,):
         Trabajador.__init__(self,nif,nombre,fecha_nac,numero_colegiado,sexo)
         self.especialidad = especialidad
         self.fecha_comienzo = fecha_comienzo
 
 
-"""En el caso de un Médico se indica la especialidad y la fecha en la que comenzó a
-ejercer"""
+    @staticmethod
+    def mostrar_años_trabajados(fecha_comienzo):
+        actualidad = dt.datetime.now()
+        inicio = dt.datetime.strptime(fecha_comienzo, '%d/%m/%Y')
+        diferencia = actualidad - inicio
+        return diferencia.days // 365

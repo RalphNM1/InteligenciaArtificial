@@ -4,6 +4,10 @@ from abc import ABC, abstractmethod
 
 
 class Trabajador:
+    """_summary_
+    
+    
+    """
     def __init__(self,nif, nombre, fecha_nac,num_colegiado,sexo):
         self.nif = nif
         self.nombre = nombre

@@ -24,14 +24,18 @@ Finalmente documenta todo con Sphinx.
 # Clases base
 from datetime import datetime
 import csv
-from Medico import Medico
-from Enfermera import Enfermera
-from Trabajador import Trabajador
+from Modelo.Medico import Medico
+from Modelo.Enfermera import Enfermera
+from Modelo.Trabajador import Trabajador
 
 lista_trabajadores = []
 
 # Funciones auxiliares
 def introducir_datos_trabajador():
+    """
+        hola
+
+    """
     while True: 
         nif = input("Introduzca el NIF del trabajador: ")
         if any(trabajador.nif == nif for trabajador in lista_trabajadores):
@@ -190,6 +194,8 @@ while True:
 
     else:
         print("Opción no válida. Por favor, seleccione una opción del menú.")
+
+
 
 
 #Finalmente documenta todo con Sphinx. 

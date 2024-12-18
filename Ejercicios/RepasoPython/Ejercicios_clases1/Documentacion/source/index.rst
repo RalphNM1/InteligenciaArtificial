@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Ejercicio Gestión de Hospital
-===========================================
+=============================
 
 Add your content using ``reStructuredText`` syntax. See the
 `reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
@@ -14,30 +14,11 @@ documentation for details.
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   app.rst 
+   clases.rst
 
-
-   Hospital main
-===================
-.. automodule:: Ejercicio_clases1
-   :members:
-
-   Trabajador
-=====================
-.. automodule:: Trabajador
-   :members:
-
-   Medico
-=================
-.. automodule:: Medico
-   :members:
-
-   Enfermera
-===================
-.. automodule:: Enfermera
-   :members:
-
-Indices
-==================
 
 * :ref:`genindex`
+* :ref:`modindex`
 * :ref:`search`

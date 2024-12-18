@@ -1,6 +1,7 @@
 from Trabajador import Trabajador
 
 class Enfermera(Trabajador):
+
     def __init__(self, nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo):
         super().__init__(nif, nombre, fecha_nac, num_colegiado, sexo)
         self.area = area

@@ -23,6 +23,7 @@ Finalmente documenta todo con Sphinx.
 
 # Clases base
 from datetime import datetime
+import csv
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
@@ -31,7 +32,7 @@ lista_trabajadores = []
 
 # Funciones auxiliares
 def introducir_datos_trabajador():
-    while True:
+    while True: 
         nif = input("Introduzca el NIF del trabajador: ")
         if any(trabajador.nif == nif for trabajador in lista_trabajadores):
             print("El NIF ya existe. Por favor, introduzca otro.")
@@ -42,7 +43,6 @@ def introducir_datos_trabajador():
             sexo = input("Introduzca el sexo (M/F): ")
             return nif, nombre, fecha_nac, num_colegiado, sexo
 
-
 def eliminar_trabajador(lista_trabajadores, nif):
     for trabajador in lista_trabajadores:
         if trabajador.nif == nif:
@@ -51,6 +51,35 @@ def eliminar_trabajador(lista_trabajadores, nif):
             return
     print("No se encontró ningún trabajador con ese NIF.")
 
+def guardar_datos_csv(nombre_archivo):
+    with open(nombre_archivo, mode='w', newline='') as archivo:
+        escritor = csv.writer(archivo)
+        for trabajador in lista_trabajadores:
+            if isinstance(trabajador, Medico):
+                escritor.writerow(["Medico", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, trabajador.num_colegiado, trabajador.sexo, trabajador.especialidad, trabajador.fecha_comienzo])
+            elif isinstance(trabajador, Enfermera):
+                escritor.writerow(["Enfermera", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, trabajador.num_colegiado, trabajador.sexo, trabajador.area, trabajador.personas_acargo])
+    print(f"Datos guardados en {nombre_archivo}.")
+
+def cargar_datos_csv(nombre_archivo):
+    global lista_trabajadores
+    lista_trabajadores = []
+    try:
+        with open(nombre_archivo, mode='r') as archivo:
+            lector = csv.reader(archivo)
+            for linea in lector:
+                tipo = linea[0]
+                if tipo == "Medico":
+                    _, nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo = linea
+                    medico = Medico(nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo)
+                    lista_trabajadores.append(medico)
+                elif tipo == "Enfermera":
+                    _, nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo = linea
+                    enfermera = Enfermera(nif, nombre, fecha_nac, num_colegiado, sexo, area, int(personas_acargo))
+                    lista_trabajadores.append(enfermera)
+        print(f"Datos cargados desde {nombre_archivo}.")
+    except FileNotFoundError:
+        print(f"El archivo {nombre_archivo} no existe.")
 
 # Menú principal
 while True:
@@ -63,7 +92,9 @@ while True:
                        "6. Mostrar número de personas a cargo de una enfermera\n"
                        "7. Añadir personas a cargo de una enfermera\n"
                        "8. Reducir personas a cargo de una enfermera\n"
-                       "9. Salir\n"))
+                       "9. Guardar datos en .csv\n"
+                       "10. Cargar datos de .csv\n"
+                       "11. Salir\n"))
     
     if opcion == 1:
         tipo_trabajador = int(input("¿Quiere introducir un médico (1) o una enfermera (2)? "))
@@ -146,6 +177,14 @@ while True:
             print("No se encontró una enfermera con ese NIF.")
 
     elif opcion == 9:
+        nombre_archivo = input("Introduzca el nombre del archivo para guardar los datos (con extensión .csv): ")
+        guardar_datos_csv(nombre_archivo)
+
+    elif opcion == 10:
+        nombre_archivo = input("Introduzca el nombre del archivo para cargar los datos (con extensión .csv): ")
+        cargar_datos_csv(nombre_archivo)
+
+    elif opcion == 11:
         print("¡Adiós!")
         break
 

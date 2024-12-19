@@ -46,7 +46,20 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="app.html">Ejercicios Clases 1</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Clases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Modelo.Trabajador.Trabajador"><code class="docutils literal notranslate"><span class="pre">Trabajador</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Trabajador.Trabajador"><code class="docutils literal notranslate"><span class="pre">Trabajador</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Trabajador.Trabajador.describeme"><code class="docutils literal notranslate"><span class="pre">Trabajador.describeme()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Medico.Medico"><code class="docutils literal notranslate"><span class="pre">Medico</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Medico.Medico.mostrar_anos_trabajados"><code class="docutils literal notranslate"><span class="pre">Medico.mostrar_años_trabajados()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Enfermera.Enfermera"><code class="docutils literal notranslate"><span class="pre">Enfermera</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Enfermera.Enfermera.anadir_personas_acargo"><code class="docutils literal notranslate"><span class="pre">Enfermera.añadir_personas_acargo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Enfermera.Enfermera.mostrar_personas_acargo"><code class="docutils literal notranslate"><span class="pre">Enfermera.mostrar_personas_acargo()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Enfermera.Enfermera.reducir_personas_acargo"><code class="docutils literal notranslate"><span class="pre">Enfermera.reducir_personas_acargo()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -75,13 +88,123 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-Modelo.Trabajador">
-<span id="clases"></span><h1>Clases<a class="headerlink" href="#module-Modelo.Trabajador" title="Link to this heading"></a></h1>
+  <section id="module-Trabajador">
+<span id="clases"></span><h1>Clases<a class="headerlink" href="#module-Trabajador" title="Link to this heading"></a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="Modelo.Trabajador.Trabajador">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Modelo.Trabajador.</span></span><span class="sig-name descname"><span class="pre">Trabajador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_colegiado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sexo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Modelo/Trabajador.html#Trabajador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Modelo.Trabajador.Trabajador" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="Trabajador.Trabajador">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Trabajador.</span></span><span class="sig-name descname"><span class="pre">Trabajador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_colegiado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sexo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Trabajador.html#Trabajador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Trabajador.Trabajador" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>_summary_</p>
+<p>Clase base que representa a un Trabajador del hospital.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nif</strong> (<em>str</em>) – NIF del trabajador.</p></li>
+<li><p><strong>nombre</strong> (<em>str</em>) – Nombre del trabajador.</p></li>
+<li><p><strong>fecha_nac</strong> (<em>str</em>) – Fecha de nacimiento del trabajador.</p></li>
+<li><p><strong>num_colegiado</strong> (<em>str</em>) – Número de colegiado del trabajador.</p></li>
+<li><p><strong>sexo</strong> (<em>str</em>) – Sexo del trabajador.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Trabajador.Trabajador.describeme">
+<span class="sig-name descname"><span class="pre">describeme</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Trabajador.html#Trabajador.describeme"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Trabajador.Trabajador.describeme" title="Link to this definition"></a></dt>
+<dd><p>Devuelve el nombre de la clase del trabajador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Nombre de la clase.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-Medico">
+<dt class="sig sig-object py" id="Medico.Medico">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Medico.</span></span><span class="sig-name descname"><span class="pre">Medico</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_colegiado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sexo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">especialidad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_comienzo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Medico.html#Medico"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Medico.Medico" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Trabajador.Trabajador" title="Trabajador.Trabajador"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trabajador</span></code></a></p>
+<p>Clase que representa a un Médico, hereda de la clase Trabajador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nif</strong> (<em>str</em>) – NIF del médico.</p></li>
+<li><p><strong>nombre</strong> (<em>str</em>) – Nombre del médico.</p></li>
+<li><p><strong>fecha_nac</strong> (<em>str</em>) – Fecha de nacimiento del médico.</p></li>
+<li><p><strong>num_colegiado</strong> (<em>str</em>) – Número de colegiado del médico.</p></li>
+<li><p><strong>sexo</strong> (<em>str</em>) – Sexo del médico.</p></li>
+<li><p><strong>especialidad</strong> (<em>str</em>) – Especialidad del médico.</p></li>
+<li><p><strong>fecha_comienzo</strong> (<em>str</em>) – Fecha de comienzo de la actividad profesional.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Medico.Medico.mostrar_anos_trabajados">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mostrar_años_trabajados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fecha_comienzo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Medico.html#Medico.mostrar_años_trabajados"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Medico.Medico.mostrar_anos_trabajados" title="Link to this definition"></a></dt>
+<dd><p>Calcula el número de años trabajados a partir de la fecha de comienzo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fecha_comienzo</strong> (<em>str</em>) – Fecha de comienzo del trabajo en formato «DD/MM/AAAA».</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Número de años trabajados.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-Enfermera">
+<dt class="sig sig-object py" id="Enfermera.Enfermera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">Enfermera.</span></span><span class="sig-name descname"><span class="pre">Enfermera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nif</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nombre</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fecha_nac</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_colegiado</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sexo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">personas_acargo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Enfermera.html#Enfermera"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Enfermera.Enfermera" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Trabajador.Trabajador" title="Trabajador.Trabajador"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trabajador</span></code></a></p>
+<p>Clase que representa a una Enfermera, hereda de la clase Trabajador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nif</strong> (<em>str</em>) – NIF de la enfermera.</p></li>
+<li><p><strong>nombre</strong> (<em>str</em>) – Nombre de la enfermera.</p></li>
+<li><p><strong>fecha_nac</strong> (<em>str</em>) – Fecha de nacimiento de la enfermera.</p></li>
+<li><p><strong>num_colegiado</strong> (<em>str</em>) – Número de colegiado de la enfermera.</p></li>
+<li><p><strong>sexo</strong> (<em>str</em>) – Sexo de la enfermera.</p></li>
+<li><p><strong>area</strong> (<em>str</em>) – Área de especialización de la enfermera.</p></li>
+<li><p><strong>personas_acargo</strong> (<em>int</em>) – Número de personas a cargo de la enfermera.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="Enfermera.Enfermera.anadir_personas_acargo">
+<span class="sig-name descname"><span class="pre">añadir_personas_acargo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cantidad</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Enfermera.html#Enfermera.añadir_personas_acargo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Enfermera.Enfermera.anadir_personas_acargo" title="Link to this definition"></a></dt>
+<dd><p>Añade una cantidad especificada de personas al cargo de la enfermera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cantidad</strong> (<em>int</em>) – Cantidad de personas añadidas al cargo.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Enfermera.Enfermera.mostrar_personas_acargo">
+<span class="sig-name descname"><span class="pre">mostrar_personas_acargo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Enfermera.html#Enfermera.mostrar_personas_acargo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Enfermera.Enfermera.mostrar_personas_acargo" title="Link to this definition"></a></dt>
+<dd><p>Muestra el número de personas a cargo de la enfermera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="Enfermera.Enfermera.reducir_personas_acargo">
+<span class="sig-name descname"><span class="pre">reducir_personas_acargo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cantidad</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Enfermera.html#Enfermera.reducir_personas_acargo"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Enfermera.Enfermera.reducir_personas_acargo" title="Link to this definition"></a></dt>
+<dd><p>Reduce una cantidad especificada de personas al cargo de la enfermera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cantidad</strong> (<em>int</em>) – Cantidad de personas reducidas al cargo.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>

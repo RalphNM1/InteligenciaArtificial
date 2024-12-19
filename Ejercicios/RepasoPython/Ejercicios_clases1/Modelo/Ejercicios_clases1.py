@@ -1,5 +1,5 @@
 
-# Clases base
+
 """
 Gestión de Trabajadores de un Hospital
 ======================================
@@ -17,12 +17,12 @@ Las clases base utilizadas en este programa se encuentran en el módulo `Modelo`
 Funciones Principales
 ---------------------
 """
-
+# No consigo que me pille Ejercicios_clase1 y el resto de clases desde fuera de otra carpeta, por eso la distribucion tan rara
 from datetime import datetime
 import csv
-from Modelo.Medico import Medico
-from Modelo.Enfermera import Enfermera
-from Modelo.Trabajador import Trabajador
+from Medico import Medico
+from Enfermera import Enfermera
+from Trabajador import Trabajador
 
 # Lista de trabajadores
 lista_trabajadores = []
@@ -218,5 +218,3 @@ while True:
 
 
 
-
-#Finalmente documenta todo con Sphinx. 

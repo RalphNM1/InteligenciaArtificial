@@ -1,0 +1,7 @@
+Ejercicios\_clases1 module
+==========================
+
+.. automodule:: Ejercicios_clases1
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,13 +1,13 @@
 =======
 Clases
 =======
-.. automodule:: Modelo.Trabajador
+.. automodule:: Trabajador
     :members:
     :show-inheritance:
-.. automodule:: Modelo.Medico
+.. automodule:: Medico
     :members:
     :show-inheritance:
-.. automodule:: Modelo.Enfermera
+.. automodule:: Enfermera
     :members:
     :show-inheritance:
-
+ 

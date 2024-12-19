@@ -45,7 +45,18 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Ejercicios Clases 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ejercicios Clases 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gestion-de-trabajadores-de-un-hospital">Gestión de Trabajadores de un Hospital</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clases-base">Clases Base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#funciones-principales">Funciones Principales</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Ejercicios_clases1.cargar_datos_csv"><code class="docutils literal notranslate"><span class="pre">cargar_datos_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Ejercicios_clases1.eliminar_trabajador"><code class="docutils literal notranslate"><span class="pre">eliminar_trabajador()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Ejercicios_clases1.guardar_datos_csv"><code class="docutils literal notranslate"><span class="pre">guardar_datos_csv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Ejercicios_clases1.introducir_datos_trabajador"><code class="docutils literal notranslate"><span class="pre">introducir_datos_trabajador()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="clases.html">Clases</a></li>
 </ul>
 
@@ -73,8 +84,71 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="ejercicios-clases-1">
-<h1>Ejercicios Clases 1<a class="headerlink" href="#ejercicios-clases-1" title="Link to this heading"></a></h1>
+  <section id="module-Ejercicios_clases1">
+<span id="ejercicios-clases-1"></span><h1>Ejercicios Clases 1<a class="headerlink" href="#module-Ejercicios_clases1" title="Link to this heading"></a></h1>
+<section id="gestion-de-trabajadores-de-un-hospital">
+<h2>Gestión de Trabajadores de un Hospital<a class="headerlink" href="#gestion-de-trabajadores-de-un-hospital" title="Link to this heading"></a></h2>
+<p>Este módulo proporciona funcionalidades para la gestión de trabajadores 
+en un hospital, incluyendo médicos y enfermeras.</p>
+<section id="clases-base">
+<h3>Clases Base<a class="headerlink" href="#clases-base" title="Link to this heading"></a></h3>
+<p>Las clases base utilizadas en este programa se encuentran en el módulo <cite>Modelo</cite>.
+- <cite>Medico</cite>
+- <cite>Enfermera</cite>
+- <cite>Trabajador</cite></p>
+</section>
+<section id="funciones-principales">
+<h3>Funciones Principales<a class="headerlink" href="#funciones-principales" title="Link to this heading"></a></h3>
+</section>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="Ejercicios_clases1.cargar_datos_csv">
+<span class="sig-prename descclassname"><span class="pre">Ejercicios_clases1.</span></span><span class="sig-name descname"><span class="pre">cargar_datos_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Ejercicios_clases1.html#cargar_datos_csv"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Ejercicios_clases1.cargar_datos_csv" title="Link to this definition"></a></dt>
+<dd><p>Carga datos de trabajadores desde un archivo CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nombre_archivo</strong> – Nombre del archivo desde el que se cargarán los datos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Ejercicios_clases1.eliminar_trabajador">
+<span class="sig-prename descclassname"><span class="pre">Ejercicios_clases1.</span></span><span class="sig-name descname"><span class="pre">eliminar_trabajador</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista_trabajadores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nif</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Ejercicios_clases1.html#eliminar_trabajador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Ejercicios_clases1.eliminar_trabajador" title="Link to this definition"></a></dt>
+<dd><p>Elimina un trabajador de la lista dado su NIF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lista_trabajadores</strong> – Lista actual de trabajadores.</p></li>
+<li><p><strong>nif</strong> – NIF del trabajador a eliminar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Ejercicios_clases1.guardar_datos_csv">
+<span class="sig-prename descclassname"><span class="pre">Ejercicios_clases1.</span></span><span class="sig-name descname"><span class="pre">guardar_datos_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nombre_archivo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Ejercicios_clases1.html#guardar_datos_csv"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Ejercicios_clases1.guardar_datos_csv" title="Link to this definition"></a></dt>
+<dd><p>Guarda los datos de los trabajadores en un archivo CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nombre_archivo</strong> – Nombre del archivo donde se guardarán los datos.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="Ejercicios_clases1.introducir_datos_trabajador">
+<span class="sig-prename descclassname"><span class="pre">Ejercicios_clases1.</span></span><span class="sig-name descname"><span class="pre">introducir_datos_trabajador</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Ejercicios_clases1.html#introducir_datos_trabajador"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#Ejercicios_clases1.introducir_datos_trabajador" title="Link to this definition"></a></dt>
+<dd><p>Solicita y valida la información básica de un trabajador.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tupla con los datos del trabajador: NIF, nombre, fecha de nacimiento,
+número de colegiado (opcional) y sexo.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

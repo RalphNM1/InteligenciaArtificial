@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ejercicios_clases1 &mdash; documentación de Ejercicio Gestión de Hospital - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Ejercicio Gestión de Hospital
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../app.html">Ejercicios Clases 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../clases.html">Clases</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Ejercicio Gestión de Hospital</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">Ejercicios_clases1</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para Ejercicios_clases1</h1><div class="highlight"><pre>
+<span></span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Gestión de Trabajadores de un Hospital</span>
+<span class="sd">======================================</span>
+
+<span class="sd">Este módulo proporciona funcionalidades para la gestión de trabajadores </span>
+<span class="sd">en un hospital, incluyendo médicos y enfermeras.</span>
+
+<span class="sd">Clases Base</span>
+<span class="sd">-----------</span>
+<span class="sd">Las clases base utilizadas en este programa se encuentran en el módulo `Modelo`.</span>
+<span class="sd">- `Medico`</span>
+<span class="sd">- `Enfermera`</span>
+<span class="sd">- `Trabajador`</span>
+
+<span class="sd">Funciones Principales</span>
+<span class="sd">---------------------</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># No consigo que me pille Ejercicios_clase1 y el resto de clases desde fuera de otra carpeta, por eso la distribucion tan rara</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">from</span> <span class="nn">Medico</span> <span class="kn">import</span> <span class="n">Medico</span>
+<span class="kn">from</span> <span class="nn">Enfermera</span> <span class="kn">import</span> <span class="n">Enfermera</span>
+<span class="kn">from</span> <span class="nn">Trabajador</span> <span class="kn">import</span> <span class="n">Trabajador</span>
+
+<span class="c1"># Lista de trabajadores</span>
+<span class="n">lista_trabajadores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="introducir_datos_trabajador">
+<a class="viewcode-back" href="../app.html#Ejercicios_clases1.introducir_datos_trabajador">[documentos]</a>
+<span class="k">def</span> <span class="nf">introducir_datos_trabajador</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solicita y valida la información básica de un trabajador.</span>
+
+<span class="sd">    :return: Tupla con los datos del trabajador: NIF, nombre, fecha de nacimiento,</span>
+<span class="sd">             número de colegiado (opcional) y sexo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">nif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF del trabajador: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif</span> <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El NIF ya existe. Por favor, introduzca otro.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nombre</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el nombre del trabajador: &quot;</span><span class="p">)</span>
+            <span class="n">fecha_nac</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca la fecha de nacimiento (formato DD/MM/AAAA): &quot;</span><span class="p">)</span>
+            <span class="n">num_colegiado</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el número de colegiado (opcional, pulse Enter si no aplica): &quot;</span><span class="p">)</span>
+            <span class="n">sexo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el sexo (M/F): &quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span></div>
+
+
+<div class="viewcode-block" id="eliminar_trabajador">
+<a class="viewcode-back" href="../app.html#Ejercicios_clases1.eliminar_trabajador">[documentos]</a>
+<span class="k">def</span> <span class="nf">eliminar_trabajador</span><span class="p">(</span><span class="n">lista_trabajadores</span><span class="p">,</span> <span class="n">nif</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Elimina un trabajador de la lista dado su NIF.</span>
+
+<span class="sd">    :param lista_trabajadores: Lista actual de trabajadores.</span>
+<span class="sd">    :param nif: NIF del trabajador a eliminar.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif</span><span class="p">:</span>
+            <span class="n">lista_trabajadores</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">trabajador</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trabajador eliminado.&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró ningún trabajador con ese NIF.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="guardar_datos_csv">
+<a class="viewcode-back" href="../app.html#Ejercicios_clases1.guardar_datos_csv">[documentos]</a>
+<span class="k">def</span> <span class="nf">guardar_datos_csv</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Guarda los datos de los trabajadores en un archivo CSV.</span>
+
+<span class="sd">    :param nombre_archivo: Nombre del archivo donde se guardarán los datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+        <span class="n">escritor</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Medico</span><span class="p">):</span>
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Medico&quot;</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_nac</span><span class="p">,</span> 
+                                   <span class="n">trabajador</span><span class="o">.</span><span class="n">num_colegiado</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">sexo</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">especialidad</span><span class="p">,</span> 
+                                   <span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_comienzo</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Enfermera</span><span class="p">):</span>
+                <span class="n">escritor</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="s2">&quot;Enfermera&quot;</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nombre</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_nac</span><span class="p">,</span> 
+                                   <span class="n">trabajador</span><span class="o">.</span><span class="n">num_colegiado</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">sexo</span><span class="p">,</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">area</span><span class="p">,</span> 
+                                   <span class="n">trabajador</span><span class="o">.</span><span class="n">personas_acargo</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos guardados en </span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="cargar_datos_csv">
+<a class="viewcode-back" href="../app.html#Ejercicios_clases1.cargar_datos_csv">[documentos]</a>
+<span class="k">def</span> <span class="nf">cargar_datos_csv</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Carga datos de trabajadores desde un archivo CSV.</span>
+
+<span class="sd">    :param nombre_archivo: Nombre del archivo desde el que se cargarán los datos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">lista_trabajadores</span>
+    <span class="n">lista_trabajadores</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">archivo</span><span class="p">:</span>
+            <span class="n">lector</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">archivo</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">linea</span> <span class="ow">in</span> <span class="n">lector</span><span class="p">:</span>
+                <span class="n">tipo</span> <span class="o">=</span> <span class="n">linea</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;Medico&quot;</span><span class="p">:</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">especialidad</span><span class="p">,</span> <span class="n">fecha_comienzo</span> <span class="o">=</span> <span class="n">linea</span>
+                    <span class="n">medico</span> <span class="o">=</span> <span class="n">Medico</span><span class="p">(</span><span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">especialidad</span><span class="p">,</span> <span class="n">fecha_comienzo</span><span class="p">)</span>
+                    <span class="n">lista_trabajadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">medico</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">tipo</span> <span class="o">==</span> <span class="s2">&quot;Enfermera&quot;</span><span class="p">:</span>
+                    <span class="n">_</span><span class="p">,</span> <span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">personas_acargo</span> <span class="o">=</span> <span class="n">linea</span>
+                    <span class="n">enfermera</span> <span class="o">=</span> <span class="n">Enfermera</span><span class="p">(</span><span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">personas_acargo</span><span class="p">))</span>
+                    <span class="n">lista_trabajadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">enfermera</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Datos cargados desde </span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El archivo </span><span class="si">{</span><span class="n">nombre_archivo</span><span class="si">}</span><span class="s2"> no existe.&quot;</span><span class="p">)</span></div>
+
+
+<span class="c1"># Aquí sigue el menú principal y las demás funcionalidades.</span>
+
+
+<span class="c1"># Menú principal</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">opcion</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Gestión de los trabajadores del hospital</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;1. Añadir trabajador</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;2. Borrar trabajador</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;3. Mostrar lista de trabajadores</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;4. Mostrar detalle de un trabajador</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;5. Mostrar número de años trabajados de un médico</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;6. Mostrar número de personas a cargo de una enfermera</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;7. Añadir personas a cargo de una enfermera</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;8. Reducir personas a cargo de una enfermera</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;9. Guardar datos en .csv</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;10. Cargar datos de .csv</span><span class="se">\n</span><span class="s2">&quot;</span>
+                       <span class="s2">&quot;11. Salir</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">tipo_trabajador</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Quiere introducir un médico (1) o una enfermera (2)? &quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">tipo_trabajador</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span> <span class="o">=</span> <span class="n">introducir_datos_trabajador</span><span class="p">()</span>
+            <span class="n">especialidad</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca la especialidad del médico: &quot;</span><span class="p">)</span>
+            <span class="n">fecha_comienzo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca la fecha en la que comenzó a ejercer (formato DD/MM/AAAA): &quot;</span><span class="p">)</span>
+            <span class="n">medico_nuevo</span> <span class="o">=</span> <span class="n">Medico</span><span class="p">(</span><span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">especialidad</span><span class="p">,</span> <span class="n">fecha_comienzo</span><span class="p">)</span>
+            <span class="n">lista_trabajadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">medico_nuevo</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">El médico </span><span class="si">{</span><span class="n">medico_nuevo</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> ha sido añadido correctamente.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">tipo_trabajador</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span> <span class="o">=</span> <span class="n">introducir_datos_trabajador</span><span class="p">()</span>
+            <span class="n">area</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el área de la enfermera: &quot;</span><span class="p">)</span>
+            <span class="n">personas_acargo</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el número de personas a cargo: &quot;</span><span class="p">))</span>
+            <span class="n">enfermera_nueva</span> <span class="o">=</span> <span class="n">Enfermera</span><span class="p">(</span><span class="n">nif</span><span class="p">,</span> <span class="n">nombre</span><span class="p">,</span> <span class="n">fecha_nac</span><span class="p">,</span> <span class="n">num_colegiado</span><span class="p">,</span> <span class="n">sexo</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">personas_acargo</span><span class="p">)</span>
+            <span class="n">lista_trabajadores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">enfermera_nueva</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">La enfermera </span><span class="si">{</span><span class="n">enfermera_nueva</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> ha sido añadida correctamente.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">nif</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF del trabajador que desea eliminar: &quot;</span><span class="p">)</span>
+        <span class="n">eliminar_trabajador</span><span class="p">(</span><span class="n">lista_trabajadores</span><span class="p">,</span> <span class="n">nif</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No hay trabajadores registrados.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Trabajadores</span><span class="se">\n</span><span class="s2">---------------&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> con NIF </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span><span class="si">}</span><span class="s2">, nacido el </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_nac</span><span class="si">}</span><span class="s2">, es un </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">describeme</span><span class="p">()</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="n">nif_buscar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF del trabajador que desea ver: &quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif_buscar</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Detalle del trabajador:</span><span class="se">\n</span><span class="s2">NIF: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span><span class="si">}</span><span class="se">\n</span><span class="s2">Nombre: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="se">\n</span><span class="s2">Fecha de nacimiento: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_nac</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Medico</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Especialidad: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">especialidad</span><span class="si">}</span><span class="se">\n</span><span class="s2">Fecha de comienzo: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_comienzo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Enfermera</span><span class="p">):</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Área: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">area</span><span class="si">}</span><span class="se">\n</span><span class="s2">Personas a cargo: </span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">personas_acargo</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró ningún trabajador con ese NIF.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">nif_buscar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF del médico: &quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Medico</span><span class="p">)</span> <span class="ow">and</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif_buscar</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">trabajador</span><span class="o">.</span><span class="n">nombre</span><span class="si">}</span><span class="s2"> ha trabajado </span><span class="si">{</span><span class="n">Medico</span><span class="o">.</span><span class="n">mostrar_años_trabajados</span><span class="p">(</span><span class="n">trabajador</span><span class="o">.</span><span class="n">fecha_comienzo</span><span class="p">)</span><span class="si">}</span><span class="s2"> años.&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró un médico con ese NIF.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">nif_buscar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF de la enfermera: &quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Enfermera</span><span class="p">)</span> <span class="ow">and</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif_buscar</span><span class="p">:</span>
+                <span class="n">trabajador</span><span class="o">.</span><span class="n">mostrar_personas_acargo</span><span class="p">()</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró una enfermera con ese NIF.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">nif_buscar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF de la enfermera: &quot;</span><span class="p">)</span>
+        <span class="n">cantidad</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Cuántas personas quiere añadir a cargo? &quot;</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Enfermera</span><span class="p">)</span> <span class="ow">and</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif_buscar</span><span class="p">:</span>
+                <span class="n">trabajador</span><span class="o">.</span><span class="n">añadir_personas_acargo</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró una enfermera con ese NIF.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">nif_buscar</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el NIF de la enfermera: &quot;</span><span class="p">)</span>
+        <span class="n">cantidad</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;¿Cuántas personas quiere reducir a cargo? &quot;</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">trabajador</span> <span class="ow">in</span> <span class="n">lista_trabajadores</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">trabajador</span><span class="p">,</span> <span class="n">Enfermera</span><span class="p">)</span> <span class="ow">and</span> <span class="n">trabajador</span><span class="o">.</span><span class="n">nif</span> <span class="o">==</span> <span class="n">nif_buscar</span><span class="p">:</span>
+                <span class="n">trabajador</span><span class="o">.</span><span class="n">reducir_personas_acargo</span><span class="p">(</span><span class="n">cantidad</span><span class="p">)</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No se encontró una enfermera con ese NIF.&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="n">nombre_archivo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el nombre del archivo para guardar los datos (con extensión .csv): &quot;</span><span class="p">)</span>
+        <span class="n">guardar_datos_csv</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">nombre_archivo</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Introduzca el nombre del archivo para cargar los datos (con extensión .csv): &quot;</span><span class="p">)</span>
+        <span class="n">cargar_datos_csv</span><span class="p">(</span><span class="n">nombre_archivo</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">opcion</span> <span class="o">==</span> <span class="mi">11</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;¡Adiós!&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Opción no válida. Por favor, seleccione una opción del menú.&quot;</span><span class="p">)</span>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Ralphy Núñez Mercado.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

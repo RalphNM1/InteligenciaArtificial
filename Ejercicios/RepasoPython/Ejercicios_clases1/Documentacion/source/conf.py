@@ -8,6 +8,7 @@
 
 import os 
 import sys
+from pathlib import Path
 
 
 project = 'Ejercicio Gestión de Hospital'
@@ -19,7 +20,15 @@ release = '1.0'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 
-sys.path.insert(0, os.path.abspath("../.."))
+sys.path.insert(0, os.path.abspath("../../Modelo"))
+
+try:
+    import Ejercicios.RepasoPython.Ejercicios_clases1.Modelo.Ejercicios_clases1 as Ejercicios_clases1
+    print("El módulo Ejercicios_clases1 fue importado correctamente.")
+except ModuleNotFoundError as e:
+    print(f"Error al importar el módulo: {e}")
+
+#sys.path.append(str(Path('Modelo').resolve()))
 sys.setrecursionlimit(1500)
 
 extensions = [ 

@@ -1,42 +1,40 @@
 
-"""
-Gestión de un hospital
-Una vez que ya has conocido cómo realizar la persistencia de los datos en Python, utilízalo 
-en tu ejercicio de clases de los trabajadores de un hospital. Guarda en .csv la información 
-de tal forma que tu nuevo menú será:
-Gestión de los trabajadores del hospital
-1. Añadir trabajador
-2. Borrar trabajador
-3. Mostrar lista de trabajadores
-4. Mostrar detalle de un trabajador
-5. Mostrar número de años trabajados de un médico
-6. Mostrar número de personas a cargo de una enfermera
-7. Añadir personas a cargo de una enfermera
-8. Reducir personas a cargo de una enfermera
-9. Guardar datos en .csv
-10. Cargar datos de .csv
-11. Salir
-Debes preguntar al usuario tanto el nombre del fichero a crear como el que se carga.
-Finalmente documenta todo con Sphinx.
-"""
-
-
 # Clases base
+"""
+Gestión de Trabajadores de un Hospital
+======================================
+
+Este módulo proporciona funcionalidades para la gestión de trabajadores 
+en un hospital, incluyendo médicos y enfermeras.
+
+Clases Base
+-----------
+Las clases base utilizadas en este programa se encuentran en el módulo `Modelo`.
+- `Medico`
+- `Enfermera`
+- `Trabajador`
+
+Funciones Principales
+---------------------
+"""
+
 from datetime import datetime
 import csv
 from Modelo.Medico import Medico
 from Modelo.Enfermera import Enfermera
 from Modelo.Trabajador import Trabajador
 
+# Lista de trabajadores
 lista_trabajadores = []
 
-# Funciones auxiliares
 def introducir_datos_trabajador():
     """
-        hola
+    Solicita y valida la información básica de un trabajador.
 
+    :return: Tupla con los datos del trabajador: NIF, nombre, fecha de nacimiento,
+             número de colegiado (opcional) y sexo.
     """
-    while True: 
+    while True:
         nif = input("Introduzca el NIF del trabajador: ")
         if any(trabajador.nif == nif for trabajador in lista_trabajadores):
             print("El NIF ya existe. Por favor, introduzca otro.")
@@ -48,6 +46,12 @@ def introducir_datos_trabajador():
             return nif, nombre, fecha_nac, num_colegiado, sexo
 
 def eliminar_trabajador(lista_trabajadores, nif):
+    """
+    Elimina un trabajador de la lista dado su NIF.
+
+    :param lista_trabajadores: Lista actual de trabajadores.
+    :param nif: NIF del trabajador a eliminar.
+    """
     for trabajador in lista_trabajadores:
         if trabajador.nif == nif:
             lista_trabajadores.remove(trabajador)
@@ -56,16 +60,30 @@ def eliminar_trabajador(lista_trabajadores, nif):
     print("No se encontró ningún trabajador con ese NIF.")
 
 def guardar_datos_csv(nombre_archivo):
+    """
+    Guarda los datos de los trabajadores en un archivo CSV.
+
+    :param nombre_archivo: Nombre del archivo donde se guardarán los datos.
+    """
     with open(nombre_archivo, mode='w', newline='') as archivo:
         escritor = csv.writer(archivo)
         for trabajador in lista_trabajadores:
             if isinstance(trabajador, Medico):
-                escritor.writerow(["Medico", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, trabajador.num_colegiado, trabajador.sexo, trabajador.especialidad, trabajador.fecha_comienzo])
+                escritor.writerow(["Medico", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, 
+                                   trabajador.num_colegiado, trabajador.sexo, trabajador.especialidad, 
+                                   trabajador.fecha_comienzo])
             elif isinstance(trabajador, Enfermera):
-                escritor.writerow(["Enfermera", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, trabajador.num_colegiado, trabajador.sexo, trabajador.area, trabajador.personas_acargo])
+                escritor.writerow(["Enfermera", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, 
+                                   trabajador.num_colegiado, trabajador.sexo, trabajador.area, 
+                                   trabajador.personas_acargo])
     print(f"Datos guardados en {nombre_archivo}.")
 
 def cargar_datos_csv(nombre_archivo):
+    """
+    Carga datos de trabajadores desde un archivo CSV.
+
+    :param nombre_archivo: Nombre del archivo desde el que se cargarán los datos.
+    """
     global lista_trabajadores
     lista_trabajadores = []
     try:
@@ -84,6 +102,9 @@ def cargar_datos_csv(nombre_archivo):
         print(f"Datos cargados desde {nombre_archivo}.")
     except FileNotFoundError:
         print(f"El archivo {nombre_archivo} no existe.")
+
+# Aquí sigue el menú principal y las demás funcionalidades.
+
 
 # Menú principal
 while True:

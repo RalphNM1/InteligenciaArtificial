@@ -70,32 +70,29 @@ def guardar_datos_csv(nombre_archivo):
     :param nombre_archivo: Nombre del archivo donde se guardarán los datos.
     """
 
-    trabajadores_df = pd.DataFrame( {"Name": ["Alice", "Bob"], "Age": [25, 30]})
-    print(trabajadores_df)
+    """    trabajadores_df = pd.DataFrame()
+   
     
     for trabajador in lista_trabajadores:
-            if isinstance(trabajador, Medico): 
-                data = {"Puesto":["Medico"],"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
-                        "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
-                        "especialidad": trabajador.especialidad, "fecha_comienzo":trabajador.fecha_comienzo}
-                
-      
-                trabajadores_df.loc[len(trabajadores_df)] =  data
-             
+        if isinstance(trabajador, Medico): 
+            trabajadores_df = pd.DataFrame({"Puesto":["Medico"],"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
+                    "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
+                    "especialidad": trabajador.especialidad, "fecha_comienzo":trabajador.fecha_comienzo})
+            
+        elif isinstance(trabajador, Enfermera):
+            trabajadores_df = pd.DataFrame({"Puesto":["Enfermera"] ,"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
+                    "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
+                    "area": trabajador.area, "personas_acargo":trabajador.personas_acargo})
+        print(trabajadores_df)
 
-            elif isinstance(trabajador, Enfermera):
-                data = {"Puesto":["Enfermera"] ,"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
-                        "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
-                        "area": trabajador.area, "personas_acargo":trabajador.personas_acargo}
-                trabajadores_df.loc[len(trabajadores_df)] =  data
+            
 
-    trabajadores_df.to_csv(nombre_archivo, sep=',')
+
+    #trabajadores_df.to_csv(nombre_archivo, sep=',')
 
     print(f"Datos guardados en {nombre_archivo}.")
-
-
-
-"""
+    """
+    
     with open(nombre_archivo, mode='w', newline='') as archivo:
         escritor = csv.writer(archivo)
         for trabajador in lista_trabajadores:
@@ -107,9 +104,11 @@ def guardar_datos_csv(nombre_archivo):
                 escritor.writerow(["Enfermera", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, 
                                    trabajador.num_colegiado, trabajador.sexo, trabajador.area, 
                                    trabajador.personas_acargo])
+                
     print(f"Datos guardados en {nombre_archivo}.")
-"""
+
     
+
 
 def cargar_datos_csv(nombre_archivo):
     """

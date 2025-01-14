@@ -20,6 +20,10 @@ Funciones Principales
 # No consigo que me pille Ejercicios_clase1 y el resto de clases desde fuera de otra carpeta, por eso la distribucion tan rara
 from datetime import datetime
 import csv
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
@@ -65,6 +69,33 @@ def guardar_datos_csv(nombre_archivo):
 
     :param nombre_archivo: Nombre del archivo donde se guardarán los datos.
     """
+
+    trabajadores_df = pd.DataFrame( {"Name": ["Alice", "Bob"], "Age": [25, 30]})
+    print(trabajadores_df)
+    
+    for trabajador in lista_trabajadores:
+            if isinstance(trabajador, Medico): 
+                data = {"Puesto":["Medico"],"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
+                        "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
+                        "especialidad": trabajador.especialidad, "fecha_comienzo":trabajador.fecha_comienzo}
+                
+      
+                trabajadores_df.loc[len(trabajadores_df)] =  data
+             
+
+            elif isinstance(trabajador, Enfermera):
+                data = {"Puesto":["Enfermera"] ,"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
+                        "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
+                        "area": trabajador.area, "personas_acargo":trabajador.personas_acargo}
+                trabajadores_df.loc[len(trabajadores_df)] =  data
+
+    trabajadores_df.to_csv(nombre_archivo, sep=',')
+
+    print(f"Datos guardados en {nombre_archivo}.")
+
+
+
+"""
     with open(nombre_archivo, mode='w', newline='') as archivo:
         escritor = csv.writer(archivo)
         for trabajador in lista_trabajadores:
@@ -77,6 +108,8 @@ def guardar_datos_csv(nombre_archivo):
                                    trabajador.num_colegiado, trabajador.sexo, trabajador.area, 
                                    trabajador.personas_acargo])
     print(f"Datos guardados en {nombre_archivo}.")
+"""
+    
 
 def cargar_datos_csv(nombre_archivo):
     """
@@ -203,11 +236,17 @@ while True:
 
     elif opcion == 9:
         nombre_archivo = input("Introduzca el nombre del archivo para guardar los datos (con extensión .csv): ")
+        
         guardar_datos_csv(nombre_archivo)
 
+     
     elif opcion == 10:
         nombre_archivo = input("Introduzca el nombre del archivo para cargar los datos (con extensión .csv): ")
         cargar_datos_csv(nombre_archivo)
+
+        hospital_df = pd.read_csv(nombre_archivo)
+
+        print(hospital_df)
 
     elif opcion == 11:
         print("¡Adiós!")

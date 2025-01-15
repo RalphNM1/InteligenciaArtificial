@@ -1,12 +1,31 @@
-Medico,35626637M,Ralphy,05/11/2004,12345,M,ESP,01/01/2020
-Enfermera,33445566S,María,01/01/2003,12344,F,A,5
-Medico,78912345N,Lucía,12/07/1980,67890,F,ESP,15/03/2015
-Enfermera,45231789P,Carlos,23/09/1990,34241,M,A,10
-Medico,36925814L,David,30/11/1975,98765,M,ESP,22/05/2012
-Enfermera,74185296H,Ana,08/04/1995,18264,F,A,7
-Medico,25896314Q,Elena,14/06/1988,54321,F,ESP,10/10/2018
-Enfermera,96385274T,Pedro,19/02/1993,11111,M,A,100000
-Medico,15975326R,Sofía,01/08/1972,11223,F,ESP,18/09/2010
-Enfermera,75395128V,Laura,27/03/1985,99333,F,A,0
-Medico,85274196K,Alberto,17/12/1983,44556,M,ESP,05/07/2016
-Enfermera,65478932C,Raquel,09/05/1991,,F,A,6
+Puesto,NIF,Nombre,Fecha de Nacimiento,Número de Colegiado,Sexo,Especialidad,Área,Fecha de Comienzo,Personas a Cargo
+Enfermera,84084815M,Alicia Sánchez,15/05/1961, ,F, ,Urgencias, ,3
+Medico,55003301W,Jeremías,04/02/1987,81843,M,Cirugía General, ,10/04/2001, 
+Medico,55393959R,Carla Martínez,07/11/1964,75339,F,Oncología, ,29/09/2017, 
+Medico,00540753C,Laura Jordán,05/02/1988,55837,M,Cirugía General, ,08/06/2010, 
+Enfermera,28780059M,Tina Pérez,04/06/1982, ,F, ,Geriatría, ,4
+Enfermera,71728130E,Gregorio,28/09/1991, ,M, ,Quirófano, ,2
+Enfermera,88346009R,Benjamina,24/04/1961, ,F, ,Cuidados Intensivos, ,5
+Enfermera,26323939E,Federico,06/05/1993, ,M, ,Cuidados Intensivos, ,6
+Enfermera,74629916L,Emilia Baker,05/08/1959, ,M, ,Quirófano, ,3
+Enfermera,19007525C,Alison Gómez,08/02/1974, ,M, ,Urgencias, ,4
+Enfermera,16652795Q,Tristán,30/07/1989, ,M, ,Urgencias, ,3
+Medico,78533426J,Jaime,12/02/1979,48051,M,Psiquiatría, ,01/07/2000, 
+Enfermera,05850917J,Sara Estrada,04/11/1985, ,M, ,Urgencias, ,4
+Medico,92299617E,Elisabeth Flores,17/06/1997,76229,M,Oncología, ,24/05/2021, 
+Enfermera,02022807N,Cora,04/10/1988, ,F, ,Quirófano, ,2
+Enfermera,32141681F,Dana Hodge,07/07/1979, ,M, ,Cuidados Intensivos, ,5
+Medico,84742067C,Teodoro,20/10/1998,45113,M,Pediatría, ,03/02/2003, 
+Medico,64496077A,Nicolás,23/05/1980,20586,F,Pediatría, ,02/11/2001, 
+Medico,31789740B,Katerina Phillips,24/05/1997,98249,F,Pediatría, ,22/05/2005, 
+Enfermera,73499364G,Nicolás Brown,25/01/1972, ,F, ,Cuidados Intensivos, ,6
+Enfermera,18964903E,Diana Brown,11/12/1975, ,F, ,Cuidados Intensivos, ,7
+Enfermera,58360230J,Ana Dunlap,10/03/1974, ,F, ,Urgencias, ,3
+Medico,91474176N,Jennifer Mcconnell,03/02/1969,81875,M,Traumatología, ,10/01/2012, 
+Enfermera,52827843K,Jonás,12/08/1959, ,M, ,Quirófano, ,2
+Medico,39378993C,Jessica Rodríguez,16/11/1979,55763,F,Cirugía General, ,30/11/2005, 
+Enfermera,09580392L,Paula,30/05/1959, ,F, ,Pediatría, ,3
+Enfermera,19904200L,Matías,12/09/1983, ,F, ,Geriatría, ,4
+Enfermera,61027163W,Tamara Ward,27/09/1993, ,M, ,Urgencias, ,5
+Enfermera,46742577T,Alba,07/01/1990, ,F, ,Quirófano, ,2
+Enfermera,32416139G,Roberto,23/06/1959, ,M, ,Quirófano, ,3

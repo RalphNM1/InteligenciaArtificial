@@ -45,7 +45,7 @@ def introducir_datos_trabajador():
         else:
             nombre = input("Introduzca el nombre del trabajador: ")
             fecha_nac = input("Introduzca la fecha de nacimiento (formato DD/MM/AAAA): ")
-            num_colegiado = input("Introduzca el número de colegiado (opcional, pulse Enter si no aplica): ")
+            num_colegiado = input("Introduzca el número de colegiado (opcional, pulse Enter para omitirlo): ")
             sexo = input("Introduzca el sexo (M/F): ")
             return nif, nombre, fecha_nac, num_colegiado, sexo
 
@@ -70,44 +70,70 @@ def guardar_datos_csv(nombre_archivo):
     :param nombre_archivo: Nombre del archivo donde se guardarán los datos.
     """
 
-    """    trabajadores_df = pd.DataFrame()
-   
-    
+    trabajadores_data = []
+
     for trabajador in lista_trabajadores:
-        if isinstance(trabajador, Medico): 
-            trabajadores_df = pd.DataFrame({"Puesto":["Medico"],"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
-                    "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
-                    "especialidad": trabajador.especialidad, "fecha_comienzo":trabajador.fecha_comienzo})
-            
+        if isinstance(trabajador, Medico):
+            trabajadores_data.append({
+                "Puesto": "Medico",
+                "NIF": trabajador.nif,
+                "Nombre": trabajador.nombre,
+                "Fecha de Nacimiento": trabajador.fecha_nac,
+                "Número de Colegiado": trabajador.num_colegiado,
+                "Sexo": trabajador.sexo,
+                "Especialidad": trabajador.especialidad,
+                "Fecha de Comienzo": trabajador.fecha_comienzo,
+            })
         elif isinstance(trabajador, Enfermera):
-            trabajadores_df = pd.DataFrame({"Puesto":["Enfermera"] ,"NIF": [trabajador.nif], "nombre": [trabajador.nombre], "fecha_nac" : [trabajador.fecha_nac], 
-                    "num_colegiado": trabajador.num_colegiado,"sexo": trabajador.sexo, 
-                    "area": trabajador.area, "personas_acargo":trabajador.personas_acargo})
-        print(trabajadores_df)
+            trabajadores_data.append({
+                "Puesto": "Enfermera",
+                "NIF": trabajador.nif,
+                "Nombre": trabajador.nombre,
+                "Fecha de Nacimiento": trabajador.fecha_nac,
+                "Número de Colegiado": trabajador.num_colegiado,
+                "Sexo": trabajador.sexo,
+                "Área": trabajador.area,
+                "Personas a Cargo": trabajador.personas_acargo,
+            })
 
-            
 
-
-    #trabajadores_df.to_csv(nombre_archivo, sep=',')
-
+    df = pd.DataFrame(trabajadores_data)
+    print(df)
+    df.to_csv(nombre_archivo, index=False)
     print(f"Datos guardados en {nombre_archivo}.")
-    """
     
-    with open(nombre_archivo, mode='w', newline='') as archivo:
-        escritor = csv.writer(archivo)
-        for trabajador in lista_trabajadores:
-            if isinstance(trabajador, Medico):
-                escritor.writerow(["Medico", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, 
-                                   trabajador.num_colegiado, trabajador.sexo, trabajador.especialidad, 
-                                   trabajador.fecha_comienzo])
-            elif isinstance(trabajador, Enfermera):
-                escritor.writerow(["Enfermera", trabajador.nif, trabajador.nombre, trabajador.fecha_nac, 
-                                   trabajador.num_colegiado, trabajador.sexo, trabajador.area, 
-                                   trabajador.personas_acargo])
-                
-    print(f"Datos guardados en {nombre_archivo}.")
 
-    
+def lista_a_df():
+    trabajadores_data = []
+
+    for trabajador in lista_trabajadores:
+        if isinstance(trabajador, Medico):
+            trabajadores_data.append({
+                "Puesto": "Medico",
+                "NIF": trabajador.nif,
+                "Nombre": trabajador.nombre,
+                "Fecha de Nacimiento": trabajador.fecha_nac,
+                "Número de Colegiado": trabajador.num_colegiado,
+                "Sexo": trabajador.sexo,
+                "Especialidad": trabajador.especialidad,
+                "Fecha de Comienzo": trabajador.fecha_comienzo,
+            })
+        elif isinstance(trabajador, Enfermera):
+            trabajadores_data.append({
+                "Puesto": "Enfermera",
+                "NIF": trabajador.nif,
+                "Nombre": trabajador.nombre,
+                "Fecha de Nacimiento": trabajador.fecha_nac,
+                "Número de Colegiado": trabajador.num_colegiado,
+                "Sexo": trabajador.sexo,
+                "Área": trabajador.area,
+                "Personas a Cargo": trabajador.personas_acargo,
+            })
+
+
+    df = pd.DataFrame(trabajadores_data)
+    return df
+
 
 
 def cargar_datos_csv(nombre_archivo):
@@ -116,26 +142,31 @@ def cargar_datos_csv(nombre_archivo):
 
     :param nombre_archivo: Nombre del archivo desde el que se cargarán los datos.
     """
-    global lista_trabajadores
-    lista_trabajadores = []
-    try:
-        with open(nombre_archivo, mode='r') as archivo:
-            lector = csv.reader(archivo)
-            for linea in lector:
-                tipo = linea[0]
-                if tipo == "Medico":
-                    _, nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo = linea
-                    medico = Medico(nif, nombre, fecha_nac, num_colegiado, sexo, especialidad, fecha_comienzo)
-                    lista_trabajadores.append(medico)
-                elif tipo == "Enfermera":
-                    _, nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo = linea
-                    enfermera = Enfermera(nif, nombre, fecha_nac, num_colegiado, sexo, area, int(personas_acargo))
-                    lista_trabajadores.append(enfermera)
-        print(f"Datos cargados desde {nombre_archivo}.")
-    except FileNotFoundError:
-        print(f"El archivo {nombre_archivo} no existe.")
+    df = pd.read_csv(nombre_archivo, skipinitialspace=True)
 
-# Aquí sigue el menú principal y las demás funcionalidades.
+    for _, row in df.iterrows():
+        if row["Puesto"] == "Medico":
+            medico = Medico(
+                nif=row["NIF"],
+                nombre=row["Nombre"],
+                fecha_nac=row["Fecha de Nacimiento"],
+                num_colegiado=row["Número de Colegiado"],
+                sexo=row["Sexo"],
+                especialidad=row["Especialidad"],
+                fecha_comienzo=row["Fecha de Comienzo"]
+            )
+            lista_trabajadores.append(medico)
+        elif row["Puesto"] == "Enfermera":
+            enfermera = Enfermera(
+                nif=row["NIF"],
+                nombre=row["Nombre"],
+                fecha_nac=row["Fecha de Nacimiento"],
+                num_colegiado=row["Número de Colegiado"],
+                sexo=row["Sexo"],
+                area=row["Área"],
+                personas_acargo=int(row["Personas a Cargo"])
+            )
+            lista_trabajadores.append(enfermera)
 
 
 # Menú principal
@@ -151,7 +182,8 @@ while True:
                        "8. Reducir personas a cargo de una enfermera\n"
                        "9. Guardar datos en .csv\n"
                        "10. Cargar datos de .csv\n"
-                       "11. Salir\n"))
+                       "11. GRAFOS \n"
+                       "12. Salir\n"))
     
     if opcion == 1:
         tipo_trabajador = int(input("¿Quiere introducir un médico (1) o una enfermera (2)? "))
@@ -241,16 +273,27 @@ while True:
      
     elif opcion == 10:
         nombre_archivo = input("Introduzca el nombre del archivo para cargar los datos (con extensión .csv): ")
-        cargar_datos_csv(nombre_archivo)
-
-        hospital_df = pd.read_csv(nombre_archivo)
-
-        print(hospital_df)
+        df = cargar_datos_csv(nombre_archivo)
 
     elif opcion == 11:
+        print("GRAFOS: ")
+        hospital_df = lista_a_df()
+
+        # Filtrar el DataFrame excluyendo a los médicos
+        hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] != "Medico"]
+
+        print(hospital_df_enfermeras.head()) 
+
+        # Graficar los datos de enfermeras
+        plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"], width=0.5)
+        plt.xlabel('Nombre')
+        plt.ylabel('Personas a Cargo')
+        plt.xticks(rotation=90)
+        plt.show()
+        
+    elif opcion == 12:
         print("¡Adiós!")
         break
-
     else:
         print("Opción no válida. Por favor, seleccione una opción del menú.")
 

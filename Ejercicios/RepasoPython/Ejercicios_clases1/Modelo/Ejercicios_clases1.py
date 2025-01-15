@@ -27,6 +27,7 @@ import seaborn as sns
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
+import duckdb
 
 # Lista de trabajadores
 lista_trabajadores = []
@@ -102,7 +103,6 @@ def guardar_datos_csv(nombre_archivo):
     df.to_csv(nombre_archivo, index=False)
     print(f"Datos guardados en {nombre_archivo}.")
     
-
 def lista_a_df():
     trabajadores_data = []
 
@@ -133,8 +133,6 @@ def lista_a_df():
 
     df = pd.DataFrame(trabajadores_data)
     return df
-
-
 
 def cargar_datos_csv(nombre_archivo):
     """
@@ -201,7 +199,7 @@ while True:
             enfermera_nueva = Enfermera(nif, nombre, fecha_nac, num_colegiado, sexo, area, personas_acargo)
             lista_trabajadores.append(enfermera_nueva)
             print(f"\nLa enfermera {enfermera_nueva.nombre} ha sido añadida correctamente.\n")
-
+    
     elif opcion == 2:
         nif = input("Introduzca el NIF del trabajador que desea eliminar: ")
         eliminar_trabajador(lista_trabajadores, nif)
@@ -269,7 +267,6 @@ while True:
         nombre_archivo = input("Introduzca el nombre del archivo para guardar los datos (con extensión .csv): ")
         
         guardar_datos_csv(nombre_archivo)
-
      
     elif opcion == 10:
         nombre_archivo = input("Introduzca el nombre del archivo para cargar los datos (con extensión .csv): ")
@@ -279,17 +276,25 @@ while True:
         print("GRAFOS: ")
         hospital_df = lista_a_df()
 
+        #print(duckdb.query("SELECT COUNT(Área) FROM hospital_df where Área like 'Urgencias'").df()) # returns a result dataframe
+
+
         # Filtrar el DataFrame excluyendo a los médicos
         hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] != "Medico"]
 
-        print(hospital_df_enfermeras.head()) 
+        print(hospital_df_enfermeras)
+
 
         # Graficar los datos de enfermeras
-        plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"], width=0.5)
+        plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"])
         plt.xlabel('Nombre')
         plt.ylabel('Personas a Cargo')
         plt.xticks(rotation=90)
         plt.show()
+        
+
+        """sns.displot(data=df, x="Área", hue="Areas", kind="hist", multiple="stack")
+        plt.show()"""
         
     elif opcion == 12:
         print("¡Adiós!")

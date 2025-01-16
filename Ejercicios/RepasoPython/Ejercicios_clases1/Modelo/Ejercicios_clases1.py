@@ -27,7 +27,8 @@ import seaborn as sns
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
-import duckdb
+
+
 
 # Lista de trabajadores
 lista_trabajadores = []
@@ -282,20 +283,34 @@ while True:
         # Filtrar el DataFrame excluyendo a los médicos
         hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] != "Medico"]
 
-        print(hospital_df_enfermeras)
+        #print(hospital_df_enfermeras)
 
+                # Gráfico de barras para las personas a cargo de las enfermeras
+        hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] == "Enfermera"]
 
-        # Graficar los datos de enfermeras
         plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"])
         plt.xlabel('Nombre')
         plt.ylabel('Personas a Cargo')
+        plt.title('Personas a cargo por enfermera')
         plt.xticks(rotation=90)
+        plt.tight_layout()
         plt.show()
-        
 
-        """sns.displot(data=df, x="Área", hue="Areas", kind="hist", multiple="stack")
-        plt.show()"""
-        
+
+                # Gráfico de distribución por área
+        sns.countplot(data=hospital_df_enfermeras, x="Área", palette="viridis", order=hospital_df["Área"].value_counts().index)
+        plt.xlabel("Área")
+        plt.ylabel("Número de personas")
+        plt.title("Distribución de personal por área")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+
+
+
+        """fig = px.bar(hospital_df, x="Área", color="Puesto", title="Distribución del personal por área y puesto")
+fig.show()"""
+
     elif opcion == 12:
         print("¡Adiós!")
         break

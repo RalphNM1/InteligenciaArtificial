@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+#import plotly.express as px
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
@@ -283,11 +284,6 @@ while True:
         # Filtrar el DataFrame excluyendo a los médicos
         hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] != "Medico"]
 
-        #print(hospital_df_enfermeras)
-
-                # Gráfico de barras para las personas a cargo de las enfermeras
-        hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] == "Enfermera"]
-
         plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"])
         plt.xlabel('Nombre')
         plt.ylabel('Personas a Cargo')
@@ -297,7 +293,6 @@ while True:
         plt.show()
 
 
-                # Gráfico de distribución por área
         sns.countplot(data=hospital_df_enfermeras, x="Área", palette="viridis", order=hospital_df["Área"].value_counts().index)
         plt.xlabel("Área")
         plt.ylabel("Número de personas")

@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-#import plotly.express as px
+import plotly.express as px
 from Medico import Medico
 from Enfermera import Enfermera
 from Trabajador import Trabajador
@@ -278,11 +278,11 @@ while True:
         print("GRAFOS: ")
         hospital_df = lista_a_df()
 
-        #print(duckdb.query("SELECT COUNT(Área) FROM hospital_df where Área like 'Urgencias'").df()) # returns a result dataframe
-
-
         # Filtrar el DataFrame excluyendo a los médicos
         hospital_df_enfermeras = hospital_df[hospital_df["Puesto"] != "Medico"]
+
+        hospital_df_medicos = hospital_df[hospital_df["Puesto"] == "Medico"]
+
 
         plt.bar(hospital_df_enfermeras["Nombre"], hospital_df_enfermeras["Personas a Cargo"])
         plt.xlabel('Nombre')
@@ -292,7 +292,6 @@ while True:
         plt.tight_layout()
         plt.show()
 
-
         sns.countplot(data=hospital_df_enfermeras, x="Área", palette="viridis", order=hospital_df["Área"].value_counts().index)
         plt.xlabel("Área")
         plt.ylabel("Número de personas")
@@ -301,10 +300,17 @@ while True:
         plt.tight_layout()
         plt.show()
 
+        sns.countplot(data=hospital_df_medicos, x="Especialidad", palette="viridis", order=hospital_df["Especialidad"].value_counts().index)
+        plt.xlabel("Área")
+        plt.ylabel("Número de personas")
+        plt.title("Distribución de medicos por especialidad")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
 
+        fig = px.bar(x=["a","b","c"], y =[1,2,3])
+        fig.write_html('first_figure.html', auto_open=True)
 
-        """fig = px.bar(hospital_df, x="Área", color="Puesto", title="Distribución del personal por área y puesto")
-fig.show()"""
 
     elif opcion == 12:
         print("¡Adiós!")

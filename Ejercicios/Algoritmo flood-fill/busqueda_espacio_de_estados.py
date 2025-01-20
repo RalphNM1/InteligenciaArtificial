@@ -19,8 +19,9 @@ matriz = np.array([
 x, y = matriz.shape
 x, y = np.meshgrid(range(x), range(y))
 
+colores = matriz.flatten()
 
-colores = []
+colores = colores / 255
 
 scatter = plt.scatter(x, -y, c=colores, s=500, cmap='gray', edgecolors='black') 
 plt.axis('off') 

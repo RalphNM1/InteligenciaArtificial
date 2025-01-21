@@ -295,7 +295,7 @@ while True:
         sns.countplot(data=hospital_df_enfermeras, x="Área", palette="viridis", order=hospital_df["Área"].value_counts().index)
         plt.xlabel("Área")
         plt.ylabel("Número de personas")
-        plt.title("Distribución de personal por área")
+        plt.title("Distribución de enfermeras por área")
         plt.xticks(rotation=45)
         plt.tight_layout()
         plt.show()
@@ -308,8 +308,10 @@ while True:
         plt.tight_layout()
         plt.show()
 
-        fig = px.bar(x=["a","b","c"], y =[1,2,3])
-        fig.write_html('first_figure.html', auto_open=True)
+
+        df = hospital_df_enfermeras
+        fig = px.bar(df, x="Nombre", y="Personas a Cargo",title="Grafo con Plotly") 
+        fig.show()
 
 
     elif opcion == 12:

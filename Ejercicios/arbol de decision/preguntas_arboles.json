@@ -1,0 +1,57 @@
+{
+    "aciculares": {
+        "pregunta": "¿El árbol tiene hojas en forma de aguja?",
+        "si": "tamaño_aciculas",
+        "no": "no_aciculares"
+    },
+    "tamaño_aciculas": {
+        "pregunta": "¿El árbol tiene las agujas largas?",
+        "si": "Pino",
+        "no": "aciculas_cortas"
+    },
+    "aciculas_cortas": {
+        "pregunta": "¿El árbol tiene las agujas reunidas en grupos?",
+        "si": "Cedro",
+        "no": "Abeto"
+    },
+    "no_aciculares": {
+        "pregunta": "¿Las hojas tiene el limbo plano y ancho?",
+        "si": "tipo_de_hojas",
+        "no": "Ciprés"
+    },
+    "tipo_de_hojas": {
+        "pregunta": "¿Las hojas son compuestas?",
+        "si": "tipo_de_hojas_compuesta",
+        "no": "tipo_hojas_simples"
+    },
+    "tipo_de_hojas_compuesta": {
+        "pregunta": "¿Las hojas son palmadao-compuestas?",
+        "si": "Castaño de indias",
+        "no": "hojas_pinnado_compuestas_fruto"
+    },
+    "hojas_pinnado_compuestas_fruto": {
+        "pregunta": "¿El fruto es una legumbre?",
+        "si": "Falsa acacia",
+        "no": "Fresno"
+    },
+    "tipo_hojas_simples": {
+        "pregunta": "¿Las hojas son duras?",
+        "si": "hojas_duras_fruto",
+        "no": "tipo_hojas_blandas"
+    },
+    "hojas_duras_fruto": {
+        "pregunta": "¿El fruto es una bellota?",
+        "si": "Encina",
+        "no": "Madroño"
+    },
+    "Pino": "Pino",
+    "Encina": "Encina",
+    "Madroño": "Madroño",
+    "Ciprés": "Ciprés",
+    "Cedro": "Cedro",
+    "Fresno": "Fresno",
+    "Abeto": "Abeto",
+    "Castaño de indias": "Castaño de indias",
+    "Falsa acacia": "Falsa acacia",
+    "Desconocido": "Desconocido"
+}

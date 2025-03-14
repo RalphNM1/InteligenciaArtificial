@@ -26,12 +26,15 @@ while True:
         rostro = auxFrame[y:y + h, x:x + w]
         rostro = cv2.resize(rostro, (150, 150), interpolation=cv2.INTER_CUBIC)
         result = face_recognizer.predict(rostro)
-        
     
         cv2.putText(frame,'{}'.format(result),(x,y-5),1,1.3,(255,255,0),1,cv2.LINE_AA)
 
-        if result[0] < 5600:
-            cv2.putText(frame,'{}'.format(imagePaths[result[0]]),(x,y-25),1,1.1,(0,255,0),1,cv2.LINE_AA)
+        print(result)
+        if result[0] == 0:
+            cv2.putText(frame,'{}'.format(imagePaths[0]),(x,y-25),1,1.1,(0,255,0),1,cv2.LINE_AA)
+            cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        elif result[0] == 5:
+            cv2.putText(frame,'{}'.format(imagePaths[1]),(x,y-25),1,1.1,(0,255,0),1,cv2.LINE_AA)
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         else:
             cv2.putText(frame,'{}'.format('Desconocido'),(x,y-20),1,1.3,(0,0,255),1,cv2.LINE_AA)

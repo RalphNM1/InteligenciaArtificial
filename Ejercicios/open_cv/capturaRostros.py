@@ -2,7 +2,7 @@ import cv2
 import os
 import imutils
 
-personName = 'Ralphy'
+personName = 'yuliia'
 dataPath = os.path.join(os.getcwd(), 'imagenes')
 personPath = dataPath + '\\' + personName
 
@@ -14,7 +14,7 @@ if not os.path.exists(personPath):
     print('Carpeta creada: ', personPath)
     os.makedirs(personPath)
 
-cap = cv2.VideoCapture('video_ralphy.mp4')
+cap = cv2.VideoCapture('video_yuliia.mp4')
 
 faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades+'haarcascade_frontalface_default.xml')
 count = 0

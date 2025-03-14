@@ -29,12 +29,17 @@ for nameDir in peopleList:
 print("Entrenamiento: ")
 
 face_recognizer = cv2.face.EigenFaceRecognizer_create()
+face_recognizer_fisher = cv2.face.FisherFaceRecognizer_create()
+#face_recognizer_fisher = cv2.face.FaceRecognizer_create()
+
 
 face_recognizer.train(facesData, np.array(labels))
-
+face_recognizer_fisher.train(facesData, np.array(labels))
 # Guardar el modelo
 
 face_recognizer.write('modeloEigenFace.xml')
-print("Modelo guardado")
+#face_recognizer_fisher.write('modeloFisherFace.xml')
+
+print("Modelos guardados")
 
 ### FALTAN 3 PERSONAS MÁS 

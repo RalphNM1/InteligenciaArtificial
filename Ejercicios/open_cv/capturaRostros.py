@@ -2,49 +2,53 @@ import cv2
 import os
 import imutils
 
-personName = 'yuliia'
+# cambiar el nombre para cada persona
+personName = 'santi' 
 dataPath = os.path.join(os.getcwd(), 'imagenes')
-personPath = dataPath + '\\' + personName
+personPath = os.path.join(dataPath, personName)
 
-if not os.path.exists('imagenes'):
-    print('Carpeta creada:  imagenes')
-    os.makedirs('imagenes')
+ # crear las carpetas necesarias 
+if not os.path.exists(dataPath):
+    print('Carpeta creada: imagenes')
+    os.makedirs(dataPath)
 
 if not os.path.exists(personPath):
-    print('Carpeta creada: ', personPath)
+    print('Carpeta creada:', personPath)
     os.makedirs(personPath)
 
-cap = cv2.VideoCapture('video_yuliia.mp4')
+video_file = 'video_santi.mp4'
+cap = cv2.VideoCapture(video_file)
 
-faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades+'haarcascade_frontalface_default.xml')
+faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 count = 0
 
+#pasar el video a escala de grises, reconocer las caras, y guardar los frames reconocidos como imagen 
 while True:
     ret, frame = cap.read()
-    if ret == False: 
+    if not ret:
         break
+
+    if video_file == "video_santi.mp4":
+        frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 
     frame = imutils.resize(frame, width=640)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     auxFrame = frame.copy()
 
     faces = faceClassif.detectMultiScale(gray, 1.3, 5)
-    
+
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
         rostro = auxFrame[y:y + h, x:x + w]
         rostro = cv2.resize(rostro, (150, 150), interpolation=cv2.INTER_CUBIC)
-        cv2.imwrite(personPath + '/rostro{}.jpg'.format(count), rostro)
+        cv2.imwrite(os.path.join(personPath, f'rostro{count}.jpg'), rostro)
         count += 1
 
     cv2.imshow('frame', frame)
-    
+
     k = cv2.waitKey(1)
     if k == 27 or count >= 300:
-        break  # Aquí se rompe el bucle correctamente
+        break  # Salir del bucle cuando se alcanza el límite de imágenes
 
-# Cierra el video y las ventanas después de salir del bucle
 cap.release()
 cv2.destroyAllWindows()
-
-### FALTAN 3 PERSONAS MÁS 

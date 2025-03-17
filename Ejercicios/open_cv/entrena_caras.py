@@ -8,6 +8,7 @@ print('Lista de personas: ', peopleList)
 labels = []
 facesData = []
 label = 0
+# leer las imagenes guardadas ateriormente
 for nameDir in peopleList:
     personPath = dataPath + '/' + nameDir
     print('Leyendo las imágenes')
@@ -28,16 +29,17 @@ for nameDir in peopleList:
 
 print("Entrenamiento: ")
 
-face_recognizer = cv2.face.EigenFaceRecognizer_create()
+# entrenar los modelos
+face_recognizer = cv2.face.EigenFaceRecognizer_create() 
 face_recognizer_fisher = cv2.face.FisherFaceRecognizer_create()
 #face_recognizer_fisher = cv2.face.FaceRecognizer_create()
 
 
 face_recognizer.train(facesData, np.array(labels))
-face_recognizer_fisher.train(facesData, np.array(labels))
+#face_recognizer_fisher.train(facesData, np.array(labels))
 # Guardar el modelo
 
-face_recognizer.write('modeloEigenFace.xml')
+face_recognizer.write('modeloEigenFace.xml') # Guardar el modelo 
 #face_recognizer_fisher.write('modeloFisherFace.xml')
 
 print("Modelos guardados")

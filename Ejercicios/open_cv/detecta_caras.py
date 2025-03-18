@@ -9,7 +9,7 @@ face_recognizer = cv2.face.EigenFaceRecognizer_create()
 
 face_recognizer.read('modeloEigenFace.xml')
 
-video_file = 'video_yuliia.mp4'
+video_file = 'video_random.mp4'
 cap = cv2.VideoCapture(video_file)
 
 faceClassif = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -33,8 +33,9 @@ while True:
         result = face_recognizer.predict(rostro)
     
         cv2.putText(frame,'{}'.format(result),(x,y-5),1,1.3,(255,255,0),1,cv2.LINE_AA)
-
-        print(result)  # al final he decido usar tannto result[0] como result[1]
+        # al final he decido usar tanto result[0] como result[1], 
+        # para que si se le introduce un video de un desconocido lo detecte como tal
+        print(result) 
         if result[0] == 1:
             cv2.putText(frame,'{}'.format(imagePaths[1]),(x,y-25),1,1.1,(0,255,0),1,cv2.LINE_AA) # colocar el nombre de la persona reconocida
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2) # colocar el rectangulo alrededor de la cara
